@@ -20,6 +20,7 @@
             <div class="h-screen">
                 {{ $slot }}
             </div>
+            @include('layouts.footer')
         </div>
     </body>
 </html>

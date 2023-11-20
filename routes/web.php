@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('fooldal');
 });
+
+Route::get('/esemenynaptar', [Controller::class, 'getEvents']);
+
+Route::get('/events', [Controller::class, 'getEvents']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

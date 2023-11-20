@@ -74,7 +74,7 @@
                             </div>
                         </div>
 
-                        <a href="#"
+                        <a href="/esemenynaptar"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Eseménynaptár</a>
 
                         <div x-data="{ isOpen: false }"

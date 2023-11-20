@@ -11,4 +11,5 @@ class Event extends Model
     protected $fillable = [
         'title', 'filepath', 'start_date', 'end_date', 'is_all_day'
     ];
+
 }
