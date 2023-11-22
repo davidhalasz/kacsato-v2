@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Select;
+
 
 class EventResource extends Resource
 {
@@ -27,6 +29,14 @@ class EventResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('Esemény megnevezése'),
+                Select::make('category')
+                    ->options([
+                        'kacsato' => 'Kacsa tó',
+                        'szarvas' => 'Szarvas',
+                        'cervinus' => 'Cervinus',
+                    ])
+                    ->required()
+                    ->label('Program kategória'),
                 Forms\Components\FileUpload::make('filepath')
                     ->required()
                     ->multiple()
@@ -67,6 +77,7 @@ class EventResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                
             ])
             ->filters([
                 //

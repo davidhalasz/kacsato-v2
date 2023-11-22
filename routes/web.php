@@ -17,11 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('fooldal');
-});
+})->name('fooldal');
 
-Route::get('/esemenynaptar', [Controller::class, 'getEvents']);
-
-Route::get('/events', [Controller::class, 'getEvents']);
+Route::get('/esemenynaptar', [Controller::class, 'getEvents'])->name('esemenynaptar');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');

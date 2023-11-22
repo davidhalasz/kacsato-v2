@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="hero-image" style="background-image: url('{{asset('images/vmitoo.jpeg')}}');">
+    <div class="hero-image min-h-screen" style="background-image: url('{{asset('images/covers/Körös_sétahajóval.jpeg')}}');">
         <div class="hero-text">
             
         </div>

@@ -17,7 +17,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen relative">
             @include('layouts.navbar')
-            <div class="h-screen">
+            <div class="">
                 {{ $slot }}
             </div>
             @include('layouts.footer')

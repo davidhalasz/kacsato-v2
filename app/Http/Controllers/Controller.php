@@ -14,7 +14,17 @@ class Controller extends BaseController
 
     public function getEvents() {
         $events = Event::all();
+        
+        $kacsatavi = Event::where('category', 'kacsato')->get();
 
-        return view('esemenynaptar', compact(['events']));
+        $szarvas = $events->filter(function($event) {
+            return $event['category'] === 'szarvas';
+        });
+
+        $cervinus = $events->filter(function($event) {
+            return $event['category'] === 'cervinus';
+        });
+
+        return view('esemenynaptar', compact(['events', 'kacsatavi', 'szarvas', 'cervinus']));
     }
 }

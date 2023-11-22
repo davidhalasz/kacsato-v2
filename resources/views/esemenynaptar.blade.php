@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="relative container mx-auto pt-[150px]">
+    <div class="container mx-auto pt-[120px] pb-20">
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-xl font-bold">Esemény Naptár</h1>
         </div>
@@ -46,6 +46,38 @@
             </div>
         </div>
 
+        <div class="flex gap-4 mt-10">
+            <div class="w-1/2 shadow-lg p-4 rounded-lg bg-[#263d8e] text-white">
+                <h2 class="text-xl font-bold mb-4">Szarvasi programok</h2>
+                @foreach ($szarvas as $event)
+                    @php
+                        setlocale(LC_TIME, 'hu_HU.UTF-8');
+                        $date = new DateTime($event->start_date);
+                        $formattedDate = strftime('%b. %e', $date->getTimestamp());
+                    @endphp
+                    <div class="flex gap-2 text-lg shadow-lg p-2 my-1">
+                        <p class="w-[70px] font-bold">{{ $formattedDate }}</p>
+                        <p class="flex-1">{{ $event->title }}</p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="w-1/2 shadow-lg p-4 rounded-lg bg-[#7F0B0C] text-white">
+                <h2 class="text-xl font-bold mb-4">Cervinus programok</h2>
+                @foreach ($cervinus as $event)
+                    @php
+                        setlocale(LC_TIME, 'hu_HU.UTF-8');
+                        $date = new DateTime($event->start_date);
+                        $formattedDate = strftime('%b. %e', $date->getTimestamp());
+                    @endphp
+                    <div class="flex gap-2 text-lg shadow-lg p-2 my-1">
+                        <p class="w-[70px] font-bold">{{ $formattedDate }}</p>
+                        <p class="flex-1">{{ $event->title }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- MODAL -->
         <div class="z-[400] fixed hidden top-0 left-0 w-full h-full outline-none overflow-x-hidden overflow-y-auto backdrop-blur-sm bg-black/30"
             id="modalScrollable" tabindex="-1" aria-labelledby="modalScrollableLabel" aria-hidden="true">
             <div class="sm:h-[calc(100%-3rem)] max-w-2xl my-6  px-4 mx-auto relative w-auto pointer-events-none">
@@ -129,7 +161,7 @@
                 var baseUrl = "{{ URL::to('/') }}";
 
                 let activedDay = '';
-                var resData = {!! $events !!};
+                var resData = {!! $kacsatavi !!};
 
                 function daysInMonth(month, year) {
                     return new Date(year, month + 1, 0).getDate();
@@ -222,11 +254,9 @@
                             if (startDateParts[0] === endDateParts[0]) {
                                 if (startDateParts[1] === endDateParts[1]) {
                                     for (let d = parseInt(startDateParts[2]); d <= parseInt(endDateParts[2]); d++) {
-                                        if (days[d - 1].dataset.year === startDateParts[0] && days[d - 1].dataset
-                                            .month ===
-                                            startDateParts[
-                                                1] && days[
-                                                d - 1].dataset.day === d.toString()) {
+                                        if (parseInt(days[d - 1].dataset.year) === parseInt(startDateParts[0]) 
+                                            && parseInt(days[d - 1].dataset.month) === parseInt(startDateParts[1])
+                                            && parseInt(days[d - 1].dataset.day) === d) {
                                             days[d - 1].classList.add('border', 'border-blue-500');
                                         }
                                     }
@@ -234,13 +264,10 @@
                             }
                         } else {
                             for (let j = 0; j < days.length; j++) {
-                                if (days[j].dataset.year === startDateParts[0] && days[j].dataset.month ===
-                                    startDateParts[
-                                        1] && days[
-                                        j].dataset.day === startDateParts[2]) {
+                                if (parseInt(days[j].dataset.year) === parseInt(startDateParts[0]) 
+                                    && parseInt(days[j].dataset.month) === parseInt(startDateParts[1]) 
+                                    && parseInt(days[j].dataset.day) === parseInt(startDateParts[2])) {
                                     days[j].classList.add('border', 'border-blue-500');
-
-                                    break;
                                 }
                             }
                         }
@@ -460,5 +487,5 @@
                 });
             });
         </script>
-    </div>
+    </div>  
 </x-guest-layout>

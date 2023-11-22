@@ -25,6 +25,7 @@ class CreateEvent extends CreateRecord
         foreach ($state['filepath'] as $key => $image) {
             Event::create([
                 'title' => $state['title'],
+                'category' => $state['category'],
                 'filepath' => $image,
                 'start_date' => $state['start_date'],
                 'end_date' => $state['end_date'],
@@ -36,7 +37,7 @@ class CreateEvent extends CreateRecord
 
     public function getTitle(): string
     {
-        return 'Képek hozzáadása';
+        return 'Esemény hozzáadása';
     }
 
     protected function getRedirectUrl(): string

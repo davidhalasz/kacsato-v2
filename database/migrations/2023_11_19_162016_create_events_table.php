@@ -18,6 +18,7 @@ return new class extends Migration
             $table->datetime('start_date');
             $table->datetime('end_date')->nullable();
             $table->boolean('is_all_day');
+            $table->string('category');
             $table->timestamps();
         });
     }
