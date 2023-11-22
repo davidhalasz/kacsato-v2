@@ -19,7 +19,9 @@ Route::get('/', function () {
     return view('fooldal');
 })->name('fooldal');
 
-Route::get('/esemenynaptar', [Controller::class, 'getEvents'])->name('esemenynaptar');;
+Route::get('/esemenynaptar', [Controller::class, 'getEvents'])->name('esemenynaptar');
+
+Route::get('/galeria', [Controller::class, 'getAlbums'])->name('galeria');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
