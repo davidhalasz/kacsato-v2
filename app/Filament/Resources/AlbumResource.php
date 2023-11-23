@@ -18,6 +18,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ImageColumn;
 
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Forms\Components\Select;
 
 class AlbumResource extends Resource
 {
@@ -40,6 +41,18 @@ class AlbumResource extends Resource
                     ->reactive()
                     ->label('Album megnevezése')
                     ->maxLength(255),
+                Select::make('album_name_select')
+                    ->options([
+                        Album::query()
+                            ->distinct()
+                            ->pluck('album_name', 'album_name')
+                            ->toArray()
+                    ])
+                    ->label('Meglévő albumhoz hozzáadás')
+                    ->live()
+                    ->afterStateUpdated(function ($set, $state) {
+                        $set('album_name', $state);
+                    }),
                 FileUpload::make('filepath')
                     ->multiple()
                     ->visibility('public')
