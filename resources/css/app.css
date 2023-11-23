@@ -24,3 +24,17 @@
   transform: translate(-50%, -50%);
   color: white;
 }
+
+.image-container {
+  display: flex; /* Flex to center the image */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-bottom: 20px; /* Bottom margin */
+  max-height: 90vh; /* Maximum height */
+}
+
+.modal-image {
+  max-height: 80vh; /* Use full height of the container */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Scale down to fit the container */
+}

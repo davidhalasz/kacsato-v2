@@ -11,10 +11,10 @@
                 </div>
 
                 <div x-show="openModal"
-                    class="z-[400] fixed top-0 left-0 h-screen w-screen backdrop-blur-sm bg-black/70"
+                    class="z-[400] fixed top-0 left-0 bottom-0 h-screen w-screen backdrop-blur-sm bg-black/70"
                     id="modalScrollable" tabindex="-1" aria-labelledby="modalScrollableLabel" aria-hidden="true">
 
-                    <div class="sm:h-[calc(100%-3rem)] w-full h-full relative my-6 px-4 mx-auto w-full">
+                    <div class="sm:h-[calc(100%-3rem)] w-full relative py-6 px-4 mx-auto">
                         <div
                             class="border-none shadow-lg flex flex-col w-full rounded-md">
                             <div class="flex justify-between items-center justify-center p-4 rounded-t-md">
@@ -31,8 +31,8 @@
                                     </svg>
                                 </button>
                             </div>
-                            <div class="flex w-full justify-between">
-                                <div class="flex items-center w-full justify-between p-4">
+                            <div class="flex w-full justify-between mb-10">
+                                <div class="flex items-center w-full h-full justify-between gap-4 container mx-auto">
                                     <div class="w-16">
                                         <button x-show="currentImgIndex > 0"
                                             @click="currentImgIndex = (currentImgIndex - 1 + images.length) % images.length"
@@ -45,8 +45,8 @@
                                         </button>
                                     </div>
 
-                                    <div id="modalContent" class="flex justify-center h-full w-full p-4">
-                                        <img x-bind:src="images[currentImgIndex]" class="object-contain h-full max-w-full" alt="">
+                                    <div id="modalContent" class="image-container">
+                                        <img x-bind:src="images[currentImgIndex]" class="modal-image" alt="">
                                     </div>
 
                                     <div class="w-10">
