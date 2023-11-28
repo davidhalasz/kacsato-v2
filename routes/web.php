@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('fooldal');
 })->name('fooldal');
 
+Route::get('/rolunk/megkozelites', function () {
+    return view('megkozelites');
+})->name('megkozelites');
+
+Route::get('/latnivalok/szarvas', [Controller::class, 'getSzarvasImages'])->name('szarvas-latnivalok');
+
 Route::get('/esemenynaptar', [Controller::class, 'getEvents'])->name('esemenynaptar');
 
 Route::get('/galeria', [Controller::class, 'getAlbums'])->name('galeria');

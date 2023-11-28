@@ -68,7 +68,7 @@
                                     tabindex="-1">
                                     <a href="#" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-0">Rövid ismertető</a>
-                                    <a href="#" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
+                                    <a href="/rolunk/megkozelites" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Megközelítés</a>
                                     <a href="#" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Parkolási rend</a>
@@ -175,7 +175,7 @@
                                     tabindex="-1">
                                     <a href="#" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-0">Kacsa-tó és környéke</a>
-                                    <a href="#" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
+                                    <a href="/latnivalok/szarvas" class="block px-4 py-2 text-md font-bold text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Szarvas és környéke</a>
                                 </div>
                             </div>

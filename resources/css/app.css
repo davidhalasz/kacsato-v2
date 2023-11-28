@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+
 @font-face {
   font-family: PoppinsBold;
   src: url(../../fonts/Poppins/Poppins-Bold.ttf);
@@ -54,6 +61,23 @@
   position: absolute;
 }
  
+
+.slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  white-space: nowrap;
+  transition: transform 0.5s ease;
+  position: absolute;
+}
+
+.slides img {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
 
 /* galeria */
 

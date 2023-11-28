@@ -46,4 +46,42 @@ class Controller extends BaseController
 
         return view('galeria', compact(['photos', 'albums']));
     }
+
+    public function getSzarvasImages() {
+        $images = [
+            'images/covers/001.JPG',
+            'images/covers/002.jpeg',
+            'images/covers/003.jpeg',
+            'images/covers/004.jpg',
+            'images/covers/005.jpeg',
+            'images/covers/006.jpg',
+            'images/covers/007.jpg',
+            'images/covers/008.jpg',
+            'images/covers/009.jpg',
+            'images/covers/010.jpg',
+            'images/covers/011.jpg',
+            'images/covers/012.jpg',
+            'images/covers/013.jpeg',
+            'images/covers/014.jpg',
+            'images/covers/015.jpeg',
+            'images/szarvas-latnivalok/20231123-DSC_0001.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0003.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0004.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0017.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0019.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0026.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0033.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0038.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0044.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0046.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0055.jpg',
+            'images/szarvas-latnivalok/20231123-DSC_0071.jpg', 
+            'images/szarvas-latnivalok/20231123-DSC_0076.jpg',
+            'images/szarvas-latnivalok/20231123-DSC_0085.jpg',
+            'images/szarvas-latnivalok/20231123-DSC_0096.jpg',
+            'images/szarvas-latnivalok/20231123-DSC_0097.jpg',
+        ];
+
+        return view('szarvas-latnivalok', compact(['images']));
+    }
 }
