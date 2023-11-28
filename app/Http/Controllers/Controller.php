@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 use App\Models\Event;
 use App\Models\Album;
+use App\Models\Image;
 use Illuminate\Support\Facades\URL;
 
 class Controller extends BaseController
@@ -31,20 +32,9 @@ class Controller extends BaseController
     }
 
     public function getAlbums() {
-        $photos = Album::all();
+        $albums = Album::with('images')->get();
 
-        $albums = Album::select('album_name')->distinct()->get();
-
-        foreach ($albums as $album) {
-            $album->imageUrls = $photos->where('album_name', $album->album_name)
-                                       ->pluck('filepath')
-                                       ->map(function ($path) {
-                                           return URL::asset('storage/' . $path);
-                                       })
-                                       ->toArray();
-        }
-
-        return view('galeria', compact(['photos', 'albums']));
+        return view('galeria', compact(['albums']));
     }
 
     public function getSzarvasImages() {
