@@ -1,7 +1,7 @@
 <x-guest-layout>
     <section class="overflow-hidden">
         <div class="parallax-image">
-            <img class="imageWithBg" src="{{ URL::asset('images/covers/makett-hatterrel.jpeg') }}" />
+            <img class="imageWithBg" src="{{ URL::asset('images/covers/makett-hatterrel.jpg') }}" />
             <h2 class="main-title boldPoppins">Szarvasi Kacsa-tó</h2>
             <img class="imageWithoutBg" src="{{ URL::asset('images/covers/makett.png') }}" />
         </div>
