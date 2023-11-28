@@ -12,19 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\FileUpload;
-use Closure;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\ImageColumn;
-
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Forms\Components\Select;
 
 class AlbumResource extends Resource
 {
     protected static ?string $model = Album::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-photo';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationLabel = 'Albumok';
 
@@ -32,37 +25,15 @@ class AlbumResource extends Resource
 
     protected static ?string $tableFiltersLabel = 'Szűrés';
 
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('album_name')
                     ->required()
-                    ->reactive()
-                    ->label('Album megnevezése')
+                    ->label('Album neve')
                     ->maxLength(255),
-                Select::make('album_name_select')
-                    ->options([
-                        Album::query()
-                            ->distinct()
-                            ->pluck('album_name', 'album_name')
-                            ->toArray()
-                    ])
-                    ->label('Meglévő albumhoz hozzáadás')
-                    ->live()
-                    ->afterStateUpdated(function ($set, $state) {
-                        $set('album_name', $state);
-                    }),
-                FileUpload::make('filepath')
-                    ->multiple()
-                    ->visibility('public')
-                    ->image()
-                    ->label('Egy vagy több kép kiválasztása')
-                    ->columnSpanFull()
-                    ->storeFileNamesIn('gallery_filename')
-                    ->placeholder('Húzd ide a képeket vagy klikkelj ide')
-                    ->required()
-                    ->directory(fn ($get) => 'albums/' . $get('album_name')),
             ]);
     }
 
@@ -72,29 +43,18 @@ class AlbumResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('album_name')
                     ->searchable(),
-                ImageColumn::make('filepath')
-                    ->height('50px')
-                    ->extraImgAttributes([
-                        'class' => 'object-cover h-fit rounded-t-xl w-full',
-                    ]),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('albumfilter')
-                    ->options(
-                        Album::query()
-                            ->distinct()
-                            ->pluck('album_name', 'album_name')
-                            ->toArray()
-                    )
-                    ->query(fn (Builder $query, array $data): Builder => (isset($data['value'])) ? $query->where('album_name', $data['value']) : $query)
-                    ->label('Szűrés albumnév szerint')
-                    ->native(false)
+                //
             ])
-            ->filtersTriggerAction(
-                fn (Action $action) => $action
-                    ->button()
-                    ->label('Szűrés albumnév szerint'),
-            )
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])

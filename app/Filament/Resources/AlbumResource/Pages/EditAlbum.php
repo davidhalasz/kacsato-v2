@@ -16,4 +16,13 @@ class EditAlbum extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    public function getTitle(): string
+    {
+        return 'Album szerkesztése';
+    }
+
+    protected function getRedirectUrl(): string {
+        return $this->getResource()::getUrl('index');
+    }
 }

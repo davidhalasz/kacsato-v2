@@ -55,7 +55,7 @@
                         $date = new DateTime($event->start_date);
                         $formattedDate = strftime('%b. %e', $date->getTimestamp());
                     @endphp
-                    <div class="flex gap-2 text-lg shadow-lg p-2 my-1">
+                    <div onclick="openModal({{ $event }})" class="flex gap-2 text-lg shadow-lg p-2 my-1 cursor-pointer hover:bg-blue-800">
                         <p class="w-[70px] font-bold">{{ $formattedDate }}</p>
                         <p class="flex-1">{{ $event->title }}</p>
                     </div>
@@ -69,7 +69,7 @@
                         $date = new DateTime($event->start_date);
                         $formattedDate = strftime('%b. %e', $date->getTimestamp());
                     @endphp
-                    <div class="flex gap-2 text-lg shadow-lg p-2 my-1">
+                    <div onclick="openModal({{ $event }})" class="flex gap-2 text-lg shadow-lg p-2 my-1 cursor-pointer hover:bg-red-800">
                         <p class="w-[70px] font-bold">{{ $formattedDate }}</p>
                         <p class="flex-1">{{ $event->title }}</p>
                     </div>
@@ -129,6 +129,19 @@
         </div>
 
         <script>
+            function generateModalDateStr(datetimeStr) {
+                let parts = datetimeStr.split(' ');
+                let dateParts = parts[0].split('-');
+
+                let months = ["jan.", "febr.", "márc.", "ápr.", "máj.", "jún.", "júl.", "aug.",
+                    "szept.", "okt.", "nov.", "dec."
+                ];
+
+                let shortMonth = months[dateParts[1] - 1];
+
+                return `${dateParts[0]} ${shortMonth} ${dateParts[2]}`;
+            }
+
             document.addEventListener('DOMContentLoaded', function() {
                 const calendarElement = document.getElementById('calendar');
                 const eventsElement = document.getElementById('events-list');
@@ -254,9 +267,9 @@
                             if (startDateParts[0] === endDateParts[0]) {
                                 if (startDateParts[1] === endDateParts[1]) {
                                     for (let d = parseInt(startDateParts[2]); d <= parseInt(endDateParts[2]); d++) {
-                                        if (parseInt(days[d - 1].dataset.year) === parseInt(startDateParts[0]) 
-                                            && parseInt(days[d - 1].dataset.month) === parseInt(startDateParts[1])
-                                            && parseInt(days[d - 1].dataset.day) === d) {
+                                        if (parseInt(days[d - 1].dataset.year) === parseInt(startDateParts[0]) &&
+                                            parseInt(days[d - 1].dataset.month) === parseInt(startDateParts[1]) &&
+                                            parseInt(days[d - 1].dataset.day) === d) {
                                             days[d - 1].classList.add('border', 'border-blue-500');
                                         }
                                     }
@@ -264,9 +277,9 @@
                             }
                         } else {
                             for (let j = 0; j < days.length; j++) {
-                                if (parseInt(days[j].dataset.year) === parseInt(startDateParts[0]) 
-                                    && parseInt(days[j].dataset.month) === parseInt(startDateParts[1]) 
-                                    && parseInt(days[j].dataset.day) === parseInt(startDateParts[2])) {
+                                if (parseInt(days[j].dataset.year) === parseInt(startDateParts[0]) &&
+                                    parseInt(days[j].dataset.month) === parseInt(startDateParts[1]) &&
+                                    parseInt(days[j].dataset.day) === parseInt(startDateParts[2])) {
                                     days[j].classList.add('border', 'border-blue-500');
                                 }
                             }
@@ -290,18 +303,7 @@
                     return `${timeParts[0]}:${timeParts[1]}`;
                 }
 
-                function generateModalDateStr(datetimeStr) {
-                    let parts = datetimeStr.split(' ');
-                    let dateParts = parts[0].split('-');
 
-                    let months = ["jan.", "febr.", "márc.", "ápr.", "máj.", "jún.", "júl.", "aug.",
-                        "szept.", "okt.", "nov.", "dec."
-                    ];
-
-                    let shortMonth = months[dateParts[1] - 1];
-
-                    return `${dateParts[0]} ${shortMonth} ${dateParts[2]}`;
-                }
 
                 function showEventsForDay(day) {
 
@@ -485,7 +487,32 @@
                     }
                     generateCalendar(currentMonth, currentYear);
                 });
+
             });
+
+            function openModal(data) {
+                const modalElement = document.getElementById('modalScrollable');
+                const modalLabel = document.getElementById('modalScrollableLabel');
+                var baseUrl = "{{ URL::to('/') }}";
+
+                modalElement.classList.remove('hidden');
+                modalLabel.textContent = data['title'];
+                modalImg.src = baseUrl + '/storage/' + data['filepath'];
+                if (data['is_all_day']) {
+                    modalTime.textContent = "Egész nap";
+                } else {
+                    modalTime.textContent = getHoursAndMinutes(data['start_date']);
+                }
+
+                if (data['end_date']) {
+                    modalDate.textContent =
+                    `${generateModalDateStr(data['start_date'])} - ${generateModalDateStr(data['end_date'])}`;
+                } else {
+                    modalDate.textContent =
+                    `${generateModalDateStr(data['start_date'])}`;
+                }
+                
+            }
         </script>
-    </div>  
+    </div>
 </x-guest-layout>

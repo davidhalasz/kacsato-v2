@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Image;
+use App\Models\Album;
 
-class Album extends Model
+class Image extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'album_name',
+        'album_id', 'filepath',
     ];
 
-    public function images() {
-        return $this->hasMany(Images::class);
+    public function album() {
+        return $this->belongsTo(Album::class);
     }
 }
+ 
