@@ -2,9 +2,9 @@
     <div x-data="{ openModal: false, images: [], currentImgIndex: 0 }" 
     x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($images)) !!}'))"
      class="container mx-auto flex min-h-screen flex-col pt-[100px]">
-        
-            <div class="py-10">
-                
+
+            <div class="">
+                <h1 class="font-bold boldPoppins text-2xl pb-8">Látnivalók Szarvason és környékén</h1>
                 <div class="grid grid-cols-6 gap-5">
                     @foreach ($images as $index => $imageUrl)
                         <img class="object-cover object-center aspect-[4/3]" src="{{ URL::asset($imageUrl) }}" alt=""
@@ -19,7 +19,11 @@
                     <div class="sm:h-[calc(100%-3rem)] w-full relative py-6 px-4 mx-auto">
                         <div
                             class="border-none shadow-lg flex flex-col w-full rounded-md">
-                            <div class="flex justify-between items-center justify-center p-4 rounded-t-md">
+                            <div class="flex  justify-between items-center justify-center p-4 rounded-t-md">
+                                <h5 class="text-2xl text-white text-center"
+                                    id="modalScrollableLabel">Látnivalók Szarvason
+                                </h5>
+
                                 <button @click="openModal = false" id="modalButton" type="button"
                                     class="text-white font-bold">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

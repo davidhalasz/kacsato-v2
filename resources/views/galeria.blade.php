@@ -1,11 +1,11 @@
 <x-guest-layout>
     <div class="container mx-auto flex min-h-screen flex-col pt-[100px]">
         @foreach ($albums as $album)
-            <div x-data="{ openModal: false, images: [], currentImgIndex: 0, currentTitle: '{{ addslashes($album->album_name) }}' }" x-init="images = @json($album->images)" class="py-10 border-b">
+            <div x-data="{ openModal: false, images: [], currentImgIndex: 0, currentTitle: '{{ addslashes($album->album_name) }}' }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($album->imageUrls)) !!}'))" class="py-10 border-b">
                 <h2 class="font-bold text-xl mb-4">{{ $album->album_name }}</h2>
                 <div class="grid grid-cols-6 gap-5">
-                    @foreach ($album->images as $index => $image)
-                        <img class="object-cover object-center aspect-[4/3]" src="{{ URL::asset('storage/' . $image['filepath']) }}" alt=""
+                    @foreach ($album->imageUrls as $index => $imageUrl)
+                        <img class="object-cover object-center aspect-[4/3]" src="{{ $imageUrl }}" alt=""
                             @click="openModal = true; currentImgIndex = {{ $index }};">
                     @endforeach
                 </div>

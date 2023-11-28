@@ -34,6 +34,13 @@ class Controller extends BaseController
     public function getAlbums() {
         $albums = Album::with('images')->get();
 
+        foreach ($albums as $album) {
+            $album->imageUrls =  $album->images->map(function ($data) {
+                                           return URL::asset('storage/' . $data->filepath);
+                                       })
+                                       ->toArray();
+        }
+
         return view('galeria', compact(['albums']));
     }
 
