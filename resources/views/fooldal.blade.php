@@ -1,11 +1,42 @@
 <x-guest-layout>
     <section class="overflow-hidden">
         <div class="parallax-image">
-            <img class="imageWithBg" src="{{ URL::asset('images/covers/makett-hatterrel.jpg') }}" />
-            <h2 class="main-title boldPoppins">Szarvasi Kacsa-tó</h2>
-            <img class="imageWithoutBg" src="{{ URL::asset('images/covers/makett.png') }}" />
+            <img class="imageWithBg" src="{{ URL::asset('images/covers/makett-hatterrel3.jpg') }}" />
+            <h2 class="main-title boldPoppins text-blue-400">Szarvasi Kacsa-tó</h2>
+            <img class="imageWithoutBg" src="{{ URL::asset('images/covers/makett2.png') }}" />
         </div>
-        <div class="content">
+        <div class="w-full content bg-gray-200">
+            <div class="w-full container mx-auto my-24 flex flex-wrap">
+                <div class="w-full mb-24">
+                    <div class="flex flex-wrap">
+                        <div class="w-1/2">
+                            <img class="rounded-3xl" src="{{asset('/images/covers/kacsatoprojekt1.jpg')}}" alt="">
+                        </div>
+                        <div class="w-1/2">
+                            <h1 class="text-blue-400 font-semibold text-4xl">Szarvasi Kacsa-tó</h1>
+                            <p class="mt-6">Szarvasi kacsatóról pár mondat, helyszín rövid bemutatása.....</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="flex flex-wrap">
+                        <div class="w-full mb-6">
+                            <h2 class="text-blue-400 font-semibold text-4xl">Kacsató megközelíthetősége</h2>
+                            <p class="mt-4">Budapesttől 165, Békéscsabától 47 kilométerre, a Hármas-Körös holtágának partján (kákafoki holtág) 
+                                fekszik Szarvas város. A Kacsa tó a város nyugati felén, a (Szarvasi) Holt-Körös mellett helyezkedik el 
+                                az Üdülő sétánynál. <br> <br>
+                                - Autóval a Nyárfa utcai játszótérig tudunk behajtani. <br>
+                                - Tömegközlekedés: a Szabadság úton elhelyezkedő Szarvas, főiskola buszmegálló megállóhely felől gyalog mintegy 250 -re északra található
+                            </p>
+                        </div>
+                        <div class="w-full">
+                            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1KJ3w1QaNJaClIUk0Fqr20aoC1OWnllE&ehbc=2E312F&noprof=1" width="100%" height="480"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
             <div class="slider h-screen w-screen">
                 <div class="slides w-full h-full">
                     <img class="w-full h-full object-cover object-center"
@@ -70,7 +101,7 @@
                 slides.style.transform = `translateX(${translateX}%)`;
             }
 
-            setInterval(nextSlide, 3000); // Change image every 3 seconds
+            setInterval(nextSlide, 4000); // Change image every 3 seconds
         });
     </script>
 </x-guest-layout>
