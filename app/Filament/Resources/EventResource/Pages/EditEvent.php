@@ -13,7 +13,21 @@ class EditEvent extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->label('Törlés')
+                ->modalHeading('Esemény törlése')
+                ->modalDescription('Biztos, hogy törölni szeretnéd az eseményt?')
+                ->modalCancelActionLabel('Mégsem')
+                ->modalSubmitActionLabel('Törlés megerősítése')
         ];
+    }
+
+    public function getTitle(): string
+    {
+        return 'Esemény szerkesztése';
+    }
+
+    protected function getRedirectUrl(): string {
+        return $this->getResource()::getUrl('index');
     }
 }

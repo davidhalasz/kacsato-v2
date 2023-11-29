@@ -42,15 +42,8 @@ class AlbumResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('album_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
+                    ->label('Album neve'),
             ])
             ->filters([
                 //

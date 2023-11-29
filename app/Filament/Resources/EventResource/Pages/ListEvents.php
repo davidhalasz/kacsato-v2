@@ -10,10 +10,11 @@ class ListEvents extends ListRecords
 {
     protected static string $resource = EventResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()->label('Új esemény hozzáadása'),
         ];
     }
+
 }

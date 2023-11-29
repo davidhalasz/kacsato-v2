@@ -1,7 +1,7 @@
 <footer class="bg-white dark:bg-gray-900">
     <div class="h-2 w-full bg-blue-400"></div>
     <div class="mx-auto w-full ">
-        <div class="flex flex-col md:flex-row justify-center px-4 py-6 space-x-8">
+        <div class="container mx-auto justify-start flex flex-col md:flex-row px-4 py-6 space-x-8">
             
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Kacsa tó üzemeltető</h2>
@@ -33,7 +33,7 @@
                 </div>
          
 
-           
+            <!--
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Rendezvénycsarnok üzemeltető</h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
@@ -59,6 +59,7 @@
                         </li>
                     </ul>
                 </div>
+            -->
             
         </div>
         <div class="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">

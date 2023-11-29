@@ -12,6 +12,17 @@ class EditImage extends EditRecord
 {
     protected static string $resource = ImageResource::class;
 
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\DeleteAction::make()
+                ->label('Törlés')
+                ->modalHeading('Kép törlése')
+                ->modalDescription('Biztos, hogy törölni szeretnéd a képet?')
+                ->modalCancelActionLabel('Mégsem')
+                ->modalSubmitActionLabel('Törlés megerősítése')
+        ];
+    }
 
     protected function getActions(): array
     {
@@ -27,8 +38,7 @@ class EditImage extends EditRecord
                         return redirect('/admin/images');
                     })
                     ->color('danger')
-                    ->modalHeading('Biztos törölni szeretnéd a képet?')
-                    ->requiresConfirmation()
+                    ->requiresConfirmation(),
         ];
     }
 

@@ -1,107 +1,112 @@
 <x-guest-layout>
-    <section class="overflow-hidden">
-        <div class="parallax-image">
-            <img class="imageWithBg" src="{{ URL::asset('images/covers/makett-hatterrel3.jpg') }}" />
-            <h2 class="main-title boldPoppins text-blue-400">Szarvasi Kacsa-tó</h2>
-            <img class="imageWithoutBg" src="{{ URL::asset('images/covers/makett2.png') }}" />
+    <section class="w-full relative">
+        <div class="">
+            <div class="h-screen w-full" x-data="{
+                activeSlide: 1,
+                slides: [1, 2, 3, 4, 5, 6, 7],
+                init() {
+                    setInterval(() => {
+                        if (this.activeSlide < this.slides.length) {
+                            this.activeSlide++;
+                        } else {
+                            this.activeSlide = 1;
+                        }
+                    }, 4000);
+                }
+            }">
+                <div class="w-full h-full relative">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 1"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0062.jpg') }}" alt="Kőrös folyó csónakkal">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 2"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0114.jpg') }}" alt="Kacsa tó ősszel">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 3"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0119.jpg') }}" alt="Kacsa tó">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 4"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0130.jpg') }}" alt="Csigaház a tenyeren">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 5"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0136.jpeg') }}" alt="Járdaút Szavason">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 6"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0142.jpeg') }}" alt="Kosárlabdapálya Szarvason">
+                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 7"
+                        x-transition:enter="transition ease-in-out duration-1000 transform"
+                        x-transition:enter-start="-translate-x-5 opacity-0"
+                        x-transition:enter-end="translate-x-0 opacity-100"
+                        x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0160.jpg') }}"
+                        alt="Kacsa tó, háttérben házakkal">
+                </div>
+            </div>
         </div>
-        <div class="w-full content bg-gray-200">
+
+        <div class="w-full">
             <div class="w-full container mx-auto my-24 flex flex-wrap">
                 <div class="w-full mb-24">
                     <div class="flex flex-wrap">
                         <div class="w-1/2">
-                            <img class="rounded-3xl" src="{{asset('/images/covers/kacsatoprojekt1.jpg')}}" alt="">
+                            <img class="rounded-3xl" src="{{ asset('/images/covers/kacsatoprojekt1.jpg') }}"
+                                alt="">
                         </div>
-                        <div class="w-1/2">
+                        <div class="pl-4 w-1/2">
                             <h1 class="text-blue-400 font-semibold text-4xl">Szarvasi Kacsa-tó</h1>
                             <p class="mt-6">Szarvasi kacsatóról pár mondat, helyszín rövid bemutatása.....</p>
                         </div>
                     </div>
                 </div>
                 <div class="w-full">
-                    <div class="flex flex-wrap">
+                    <div class="flex flex-wrap gap-4">
                         <div class="w-full mb-6">
                             <h2 class="text-blue-400 font-semibold text-4xl">Kacsató megközelíthetősége</h2>
-                            <p class="mt-4">Budapesttől 165, Békéscsabától 47 kilométerre, a Hármas-Körös holtágának partján (kákafoki holtág) 
-                                fekszik Szarvas város. A Kacsa tó a város nyugati felén, a (Szarvasi) Holt-Körös mellett helyezkedik el 
+                            <p class="mt-4">Budapesttől 165, Békéscsabától 47 kilométerre, a Hármas-Körös holtágának
+                                partján (kákafoki holtág)
+                                fekszik Szarvas város. A Kacsa tó a város nyugati felén, a (Szarvasi) Holt-Körös mellett
+                                helyezkedik el
                                 az Üdülő sétánynál. <br> <br>
                                 - Autóval a Nyárfa utcai játszótérig tudunk behajtani. <br>
-                                - Tömegközlekedés: a Szabadság úton elhelyezkedő Szarvas, főiskola buszmegálló megállóhely felől gyalog mintegy 250 -re északra található
+                                - Tömegközlekedés: a Szabadság úton elhelyezkedő Szarvas, főiskola buszmegálló
+                                megállóhely felől gyalog mintegy 250 -re északra található
                             </p>
                         </div>
                         <div class="w-full">
-                            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1KJ3w1QaNJaClIUk0Fqr20aoC1OWnllE&ehbc=2E312F&noprof=1" width="100%" height="480"></iframe>
+                            <img class="rounded-sm" src="{{ URL::asset('/images/fooldal/megerkezes.jpg') }}"
+                                alt="Kacsa tó megközelíthetősége">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="">
-            <div class="slider h-screen w-screen">
-                <div class="slides w-full h-full">
-                    <img class="w-full h-full object-cover object-center"
-                        src="{{ URL::asset('images/fooldal/20231123-DSC_0062.jpg') }}" alt="Image 1">
-                    <img class="w-full h-full object-cover object-center"
-                        src="{{ URL::asset('images/fooldal/20231123-DSC_0114.jpg') }}" alt="Image 2">
-                    <img class="w-full h-full object-cover object-center"
-                        src="{{ URL::asset('images/fooldal/20231123-DSC_0119.jpg') }}" alt="Image 3">
-                </div>
-            </div>
+        <div class="fixed bottom-0 right-0">
+            <img class="max-h-52" src="{{URL::asset('images/fooldal/szechenyi-ka.png')}}" alt="">
         </div>
     </section>
-
-    <script>
-        let controller = new ScrollMagic.Controller();
-        let timeline = new TimelineMax();
-
-        timeline
-            .to(".imageWithoutBg", 3, {
-                y: -300
-            })
-            .fromTo(".main-title", {
-                scale: 1
-            }, {
-                scale: 3
-            }, '-=3')
-            .to(".main-title", {
-                left: '50%'
-            }, '-=3')
-            .to(".main-title", {
-                top: '20%'
-            }, '-=3')
-            .fromTo(".imageWithBg", {
-                y: 0
-            }, {
-                y: 0
-            }, "-=3")
-            .to(".content", 3, {
-                top: '0%'
-            }, '-=3');
-
-        let scene = new ScrollMagic.Scene({
-            triggerElement: "section",
-            duration: "100%",
-            triggerHook: 0,
-        }).setTween(timeline).setPin('section').addTo(controller);
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const slides = document.querySelector(".slides");
-            const images = slides.getElementsByTagName("img");
-            let index = 0;
-            let translateX = 0;
-
-            function nextSlide() {
-                if (index < images.length - 1) {
-                    index++;
-                    translateX -= 100;
-                } else {
-                    index = 0;
-                    translateX = 0;
-                }
-                slides.style.transform = `translateX(${translateX}%)`;
-            }
-
-            setInterval(nextSlide, 4000); // Change image every 3 seconds
-        });
-    </script>
 </x-guest-layout>

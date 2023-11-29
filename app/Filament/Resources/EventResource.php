@@ -64,30 +64,26 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Esemény neve'),
                 Tables\Columns\TextColumn::make('start_date')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Esemény kezdete'),
                 Tables\Columns\TextColumn::make('end_date')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Esemény vége'),
                 Tables\Columns\IconColumn::make('is_all_day')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->boolean()
+                    ->label('Egész napos?'),
                 
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->label('Szerkesztés'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

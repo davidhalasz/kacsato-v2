@@ -13,7 +13,7 @@ class ListImages extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make()->label('Új hozzáadása'),
+            Actions\CreateAction::make()->label('Új kép(ek) hozzáadása'),
         ];
     }
 

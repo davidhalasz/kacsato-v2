@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <div class="container mx-auto pt-[120px] pb-20">
+    <div class="container mx-auto pt-[100px] pb-20">
         <div class="flex justify-between items-center mb-4">
-            <h1 class="text-xl font-bold">Esemény Naptár</h1>
+            <h1 class="text-blue-400 font-bold boldPoppins text-2xl">Kacsa tavi eseménynaptár</h1>
         </div>
 
         <div class="flex">
@@ -310,6 +310,7 @@
                     eventsElement.innerHTML = '';
 
                     let days = document.getElementsByClassName('day');
+                    let countEvent = 0;
 
                     for (let i = 0; i < days.length; i++) {
                         if (days[i].dataset.day === activedDay) {
@@ -387,6 +388,7 @@
                                         })
 
                                         eventsElement.appendChild(listRow);
+                                        countEvent++;
                                     }
                                 } else {
                                     if (days[i].dataset.day === eventDate.getDate().toString() && days[i].dataset
@@ -441,6 +443,7 @@
                                         })
 
                                         eventsElement.appendChild(listRow);
+                                        countEvent++;
                                     }
                                 }
                             }
@@ -448,6 +451,16 @@
                         }
                     }
                     activedDay = day;
+
+                    if (countEvent === 0) {
+                        let emptyDiv = document.createElement('div');
+                        
+                        emptyDiv.textContent = "Ezen a napon nincs esemény. Válassz másik napot.";
+                        emptyDiv.className = 'w-full h-full text-center font-bold pt-10';
+
+               
+                        eventsElement.appendChild(emptyDiv);
+                    }
                 }
 
                 generateCalendar(currentMonth, currentYear);

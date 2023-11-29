@@ -1,5 +1,6 @@
 <x-guest-layout>
     <div class="container mx-auto flex min-h-screen flex-col pt-[100px]">
+        <h1 class="text-blue-400 font-bold boldPoppins text-2xl">Galéria</h1>
         @foreach ($albums as $album)
             <div x-data="{ openModal: false, images: [], currentImgIndex: 0, currentTitle: '{{ addslashes($album->album_name) }}' }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($album->imageUrls)) !!}'))" class="py-10 border-b">
                 <h2 class="font-bold text-xl mb-4">{{ $album->album_name }}</h2>

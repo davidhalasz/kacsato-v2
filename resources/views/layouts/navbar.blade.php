@@ -18,7 +18,7 @@
   
               Menu open: "hidden", Menu closed: "block"
             -->
-                    <svg x-show="!isOpenMobileMenu" class="block lg:hidden h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    <svg x-show="!isOpenMobileMenu" class="block lg:hidden h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -28,7 +28,7 @@
   
               Menu open: "block", Menu closed: "hidden"
             -->
-                    <svg x-show="isOpenMobileMenu" class="block lg:hidden h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    <svg x-show="isOpenMobileMenu" class="block lg:hidden h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -37,7 +37,7 @@
             <div class="flex flex-1 items-center justify-center lg:items-stretch lg:justify-start">
 
                 <div class="hidden lg:ml-6 lg:block">
-                    <div class="flex space-x-4">
+                    <div class="flex justify-between space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-white hover:bg-gray-700 hover:text-white" -->
                         <a href="/" class="text-white hover:text-white hover:bg-gray-700 rounded-md px-3 py-2 text-md"
                             aria-current="page">Kezdőlap</a>
@@ -68,9 +68,9 @@
                                         tabindex="-1" id="user-menu-item-0">Rövid ismertető</a>
                                     <a href="/rolunk/megkozelites" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Megközelítés</a>
-                                    <a href="#" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
-                                        tabindex="-1" id="user-menu-item-2">Parkolási rend</a>
-                                    <a href="#" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
+                                    <a href="/rolunk/parkolas" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
+                                        tabindex="-1" id="user-menu-item-2">Parkolás</a>
+                                    <a href="/rolunk/hazirend" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Házirend</a>
                                 </div>
                             </div>
@@ -194,10 +194,9 @@
                 <div class="flex flex-col" @click="isOpen = !isOpen">
                     <div>
                         <button type="button"
-                            class="flex text-md  gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
+                            class="flex text-md items-center gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
                             aria-expanded="false" aria-haspopup="true">
-                            <p class=">
-                                Rólunk</p>
+                            <p class="block py-2 text-md">Rólunk</p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -213,27 +212,26 @@
                         tabindex="-1">
                         <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-0">Rövid ismertető</a>
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a href="/rolunk/megkozelites" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Megközelítés</a>
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
-                            id="user-menu-item-1">Parkolási rend</a>
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a href="/rolunk/parkolas" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                            id="user-menu-item-1">Parkolás</a>
+                        <a href="/rolunk/hazirend" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Házirend</a>
                     </div>
                 </div>
             </div>
 
-            <a href="#" class="text-white rounded-md px-3 py-2 text-md "
+            <a href="/esemenynaptar" class="text-white rounded-md px-3 py-2 text-md "
                 aria-current="page">Eseménynaptár</a>
 
             <div x-data="{ isOpen: false }" class="flex items-center text-white">
                 <div class="flex flex-col" @click="isOpen = !isOpen">
                     <div>
                         <button type="button"
-                            class="flex text-md  gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
+                            class="flex text-md items-center gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
                             aria-expanded="false" aria-haspopup="true">
-                            <p class=">
-                                Rendezvényhelyszín</p>
+                            <p lass="block py-2 text-md">Rendezvényhelyszín</p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -262,10 +260,9 @@
                 <div class="flex flex-col text-white" @click="isOpen = !isOpen">
                     <div>
                         <button type="button"
-                            class="flex text-md  gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
+                            class="flex text-md items-center gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
                             aria-expanded="false" aria-haspopup="true">
-                            <p class=">
-                                Turizmus</p>
+                            <p class="block py-2 text-md">Turizmus</p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -295,10 +292,9 @@
                 <div class="flex flex-col text-white " @click="isOpen = !isOpen">
                     <div>
                         <button type="button"
-                            class="flex text-md  gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
+                            class="flex text-md items-center gap-1 hover:text-white hover:bg-gray-700 rounded-md px-3 py-2"
                             aria-expanded="false" aria-haspopup="true">
-                            <p class=">
-                                Látnivalók</p>
+                            <p class="block py-2 text-md">Látnivalók</p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -314,7 +310,7 @@
                         tabindex="-1">
                         <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-0">Kacsa-tó környéke</a>
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a href="/latnivalok/szarvas" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-0">Szarvas környéke</a>
                     </div>
                 </div>

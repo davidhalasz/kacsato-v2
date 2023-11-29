@@ -17,6 +17,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Actions\Action;
 
 class ImageResource extends Resource
 {
@@ -58,7 +59,8 @@ class ImageResource extends Resource
                 Tables\Columns\TextColumn::make('album.album_name')->label('Album neve')->sortable()->searchable(),
                 ImageColumn::make('filepath')
                     ->height(100)
-                    ->width(140),
+                    ->width(140)
+                    ->label('Kép'),
             ])
             ->filters([
                 SelectFilter::make('albumfilter')
@@ -72,8 +74,14 @@ class ImageResource extends Resource
                     ->label('Szűrés albumnév szerint')
                     ->native(false)
             ])
+            ->filtersTriggerAction(
+                fn (Action $action) => $action
+                    ->button()
+                    ->modalHeading('title')
+                    ->label('Szűrés'),
+            )
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->label('szerkeszt'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

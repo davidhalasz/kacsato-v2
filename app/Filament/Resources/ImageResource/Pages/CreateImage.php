@@ -28,7 +28,7 @@ class CreateImage extends CreateRecord
                 'filepath' => $image,
             ]);
         }
-        return redirect('/admin/albums');
+        return redirect('/admin/images');
     }
 
     public function getTitle(): string

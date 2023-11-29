@@ -23,6 +23,14 @@ Route::get('/rolunk/megkozelites', function () {
     return view('megkozelites');
 })->name('megkozelites');
 
+Route::get('/rolunk/parkolas', function () {
+    return view('parkolas');
+})->name('parkolas');
+
+Route::get('/rolunk/hazirend', function () {
+    return view('hazirend');
+})->name('hazirend');
+
 Route::get('/latnivalok/szarvas', [Controller::class, 'getSzarvasImages'])->name('szarvas-latnivalok');
 
 Route::get('/esemenynaptar', [Controller::class, 'getEvents'])->name('esemenynaptar');
