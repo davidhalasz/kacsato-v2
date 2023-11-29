@@ -78,7 +78,7 @@
                                 alt="">
                         </div>
                         <div class="pl-4 w-1/2">
-                            <h1 class="text-blue-400 font-semibold text-4xl">Szarvasi Kacsa-tó</h1>
+                            <h1 class="text-blue-400 font-semibold text-4xl">Szarvasi Kacsa tó</h1>
                             <p class="mt-6">Szarvasi kacsatóról pár mondat, helyszín rövid bemutatása.....</p>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                 <div class="w-full">
                     <div class="flex flex-wrap gap-4">
                         <div class="w-full mb-6">
-                            <h2 class="text-blue-400 font-semibold text-4xl">Kacsató megközelíthetősége</h2>
+                            <h2 class="text-blue-400 font-semibold text-4xl">Kacsa tó megközelíthetősége</h2>
                             <p class="mt-4">Budapesttől 165, Békéscsabától 47 kilométerre, a Hármas-Körös holtágának
                                 partján (kákafoki holtág)
                                 fekszik Szarvas város. A Kacsa tó a város nyugati felén, a (Szarvasi) Holt-Körös mellett
