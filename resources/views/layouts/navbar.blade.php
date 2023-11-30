@@ -186,8 +186,8 @@
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div x-show="isOpenMobileMenu" class="lg:hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pb-3 pt-2 text-white">
-            <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-md "
+        <div class="space-y-1 px-2  pt-2 text-white">
+            <a href="/" class="text-white rounded-md px-3 py-2 text-md "
                 aria-current="page">Kezdőlap</a>
 
             <div x-data="{ isOpen: false }" class="flex items-center text-white">
@@ -253,7 +253,7 @@
                 </div>
             </div>
 
-            <a href="#" class="text-white rounded-md px-3 py-2 text-md "
+            <a href="/galeria" class="text-white rounded-md px-3 py-2 text-md "
                 aria-current="page">Galéria</a>
 
             <div x-data="{ isOpen: false }" class="flex items-center">

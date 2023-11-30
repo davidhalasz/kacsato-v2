@@ -303,8 +303,6 @@
                     return `${timeParts[0]}:${timeParts[1]}`;
                 }
 
-
-
                 function showEventsForDay(day) {
 
                     eventsElement.innerHTML = '';
@@ -374,7 +372,11 @@
                                         rowTitle.addEventListener('click', function() {
                                             modalElement.classList.remove('hidden');
                                             modalLabel.textContent = resData[j]['title'];
-                                            modalImg.src = baseUrl + '/storage/' + resData[j]['filepath'];
+                                            let imageurlString = resData[j]['filepath'];
+                                            var parsedArray = JSON.parse(imageurlString);
+                                            var imageurl = parsedArray[0].replace('\\/', '/');
+                                            
+                                            modalImg.src = baseUrl + '/storage/' + imageurl;
                                             if (resData[j]['is_all_day']) {
                                                 modalTime.textContent = "Egész nap";
                                             } else {
@@ -433,7 +435,11 @@
                                         rowTitle.addEventListener('click', function() {
                                             modalElement.classList.remove('hidden');
                                             modalLabel.textContent = resData[j]['title'];
-                                            modalImg.src = baseUrl + '/storage/' + resData[j]['filepath'];
+                                            let imageurlString = resData[j]['filepath'];
+                                            var parsedArray = JSON.parse(imageurlString);
+                                            var imageurl = parsedArray[0].replace('\\/', '/');
+                                            console.log(imageurl);
+                                            modalImg.src = baseUrl + '/storage/' + imageurl;
                                             modalTime.textContent = getHoursAndMinutes(resData[j][
                                                 'start_date'
                                             ]);
@@ -514,7 +520,11 @@
                 if (data['is_all_day']) {
                     modalTime.textContent = "Egész nap";
                 } else {
-                    modalTime.textContent = getHoursAndMinutes(data['start_date']);
+                    let parts = data['start_date'].split(' ');
+                    let timeParts = parts[1].split(':');
+
+                    let timeresult = `${timeParts[0]}:${timeParts[1]}`;
+                    modalTime.textContent = timeresult;
                 }
 
                 if (data['end_date']) {

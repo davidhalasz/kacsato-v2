@@ -32,12 +32,12 @@
                     <table class="table-auto">
                         <tbody>
                             <tr class="odd:bg-white bg-slate-300">
-                                <td class="font-bold boldPoppins p-4 pr-6">Felnőtt kerékpár (női/férfi):</td>
-                                <td class="p-4">1.000 Ft/óra </br>3.000 Ft/nap</td>
+                                <td class="font-bold boldPoppins p-4 pr-4 md:pr-6">Felnőtt kerékpár (női/férfi):</td>
+                                <td class="py-4 px-2 md:p-4">1.000 Ft/óra </br>3.000 Ft/nap</td>
                             </tr>
                             <tr class="odd:bg-white bg-slate-300">
-                                <td class="font-bold boldPoppins p-4 pr-6">Gyermek kerékpár:</td>
-                                <td class="p-4">1.000 Ft/óra </br>3.000 Ft/nap</td>
+                                <td class="font-bold boldPoppins p-4 pr-4 md:pr-6">Gyermek kerékpár:</td>
+                                <td class="py-4 px-2 md:p-4">1.000 Ft/óra </br>3.000 Ft/nap</td>
                             </tr>
                         </tbody>
                     </table>
