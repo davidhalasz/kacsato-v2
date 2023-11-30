@@ -19,13 +19,17 @@ Route::get('/', function () {
     return view('fooldal');
 })->name('fooldal');
 
-Route::get('/rolunk/megkozelites', function () {
-    return view('megkozelites');
-})->name('megkozelites');
-
 Route::get('/rolunk/parkolas', function () {
     return view('parkolas');
 })->name('parkolas');
+
+Route::get('/turizmus/kerekpar-kolcsonzes', function () {
+    return view('kerekparkolcsonzes');
+})->name('kerekparkolcsonzes');
+
+Route::get('/turizmus/kenu-berles', function () {
+    return view('kenu-berles');
+})->name('kenu-berles');
 
 Route::get('/rolunk/hazirend', function () {
     return view('hazirend');

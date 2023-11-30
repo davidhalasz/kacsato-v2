@@ -64,9 +64,9 @@
                                     class="absolute right-0 z-10 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                                     tabindex="-1">
-                                    <a href="#" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
+                                    <a onclick="scrollToDiv('rolunk')" href="/#rolunk"  class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-0">Rövid ismertető</a>
-                                    <a href="/rolunk/megkozelites" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
+                                    <a onclick="scrollToDiv('megkozelites')" href="/#megkozelites" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Megközelítés</a>
                                     <a href="/rolunk/parkolas" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Parkolás</a>
@@ -140,9 +140,9 @@
                                         tabindex="-1" id="user-menu-item-0">Szállások</a>
                                     <a href="#" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Éttermek, bárok, cukrászdák</a>
-                                    <a href="#" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
-                                        tabindex="-1" id="user-menu-item-2">Kerékpár bérlés</a>
-                                    <a href="#" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
+                                    <a href="/turizmus/kerekpar-kolcsonzes" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
+                                        tabindex="-1" id="user-menu-item-2">Kerékpár kölcsönzés</a>
+                                    <a href="/turizmus/kenu-berles" class="block px-4 py-2 text-md  text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Kenu bérlés</a>
                                 </div>
                             </div>
@@ -210,9 +210,9 @@
                         class="ml-4 origin-top-right ring-1 ring-black ring-opacity-5 focus:outline-none"
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                         tabindex="-1">
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a onclick="scrollToDiv('rolunk')" href="/#rolunk" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-0">Rövid ismertető</a>
-                        <a href="/rolunk/megkozelites" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a onclick="scrollToDiv('megkozelites')" href="/#megkozelites" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Megközelítés</a>
                         <a href="/rolunk/parkolas" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Parkolás</a>
@@ -280,9 +280,9 @@
                             id="user-menu-item-0">Szállások</a>
                         <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Éttermek, bárok, cukrászdák</a>
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a href="/turizmus/kerekpar-kolcsonzes" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Kerékpár bérlés</a>
-                        <a href="#" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a href="/turizmus/kenu-berles" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Kenu bérlés</a>
                     </div>
                 </div>

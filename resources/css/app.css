@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-image {
+  width: 100%;
+  height: calc(100vh - 64px);
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity 1s;

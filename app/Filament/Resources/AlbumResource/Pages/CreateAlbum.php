@@ -11,13 +11,7 @@ class CreateAlbum extends CreateRecord
 {
     protected static string $resource = AlbumResource::class;
 
-    protected function getFormActions(): array
-    {
-        return [
-            Action::make('createAlbum')->action('createAlbum')->color('primary')->label('Hozzáadás'),
-            $this->getCancelFormAction()->label('Mégsem')
-        ];
-    }
+    
 
     public function getTitle(): string
     {

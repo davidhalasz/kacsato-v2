@@ -4,7 +4,7 @@
             <h1 class="text-blue-400 font-bold boldPoppins text-2xl">Kacsa tavi eseménynaptár</h1>
         </div>
 
-        <div class="flex">
+        <div class="flex flex-col md:flex-row gap-4">
             <!-- Naptár -->
             <div class="bg-white shadow-lg p-4 rounded-lg h-fit">
                 <div class="flex justify-between pb-4 gap-8">
@@ -37,7 +37,7 @@
 
 
             <!-- Események -->
-            <div id="events" class="flex-1 ml-4 bg-white shadow-lg p-4 rounded-lg">
+            <div id="events" class="flex-1 bg-white shadow-lg p-4 rounded-lg">
                 <h2 id='currentEventMonth' class="text-lg font-bold mb-2 text-center">Esemény(ek)</h2>
                 <h2 id='currentEventDay' class="text-lg font-bold mb-2 text-center"></h2>
                 <div id="events-list" class="flex flex-col">
@@ -46,8 +46,8 @@
             </div>
         </div>
 
-        <div class="flex gap-4 mt-10">
-            <div class="w-1/2 shadow-lg p-4 rounded-lg bg-[#263d8e] text-white">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+            <div class="shadow-lg p-4 rounded-lg bg-[#263d8e] text-white">
                 <h2 class="text-xl font-bold mb-4">Szarvasi programok</h2>
                 @foreach ($szarvas as $event)
                     @php
@@ -61,7 +61,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="w-1/2 shadow-lg p-4 rounded-lg bg-[#7F0B0C] text-white">
+            <div class="shadow-lg p-4 rounded-lg bg-[#7F0B0C] text-white">
                 <h2 class="text-xl font-bold mb-4">Cervinus programok</h2>
                 @foreach ($cervinus as $event)
                     @php
