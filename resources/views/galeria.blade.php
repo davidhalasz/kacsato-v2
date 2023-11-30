@@ -2,9 +2,9 @@
     <div class="container mx-auto flex min-h-screen flex-col pt-[100px]">
         <h1 class="text-blue-400 font-bold boldPoppins text-2xl">Galéria</h1>
         @foreach ($albums as $album)
-            <div x-data="{ openModal: false, images: [], currentImgIndex: 0, currentTitle: '{{ addslashes($album->album_name) }}' }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($album->imageUrls)) !!}'))" class="py-10 border-b">
+            <div x-data="{ openModal: false, images: [], currentImgIndex: 0, currentTitle: '{{ addslashes($album->album_name) }}' }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($album->imageUrls)) !!}'))" class="py-10 border-b px-2">
                 <h2 class="font-bold text-xl mb-4">{{ $album->album_name }}</h2>
-                <div class="grid grid-cols-6 gap-5">
+                <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5">
                     @foreach ($album->imageUrls as $index => $imageUrl)
                         <img class="object-cover object-center aspect-[4/3]" src="{{ $imageUrl }}" alt=""
                             @click="openModal = true; currentImgIndex = {{ $index }};">

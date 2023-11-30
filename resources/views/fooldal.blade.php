@@ -78,7 +78,7 @@
         </div>
 
         <div class="w-full">
-            <div class="w-full container mx-auto my-24 flex flex-wrap">
+            <div class="w-full container mx-auto my-24 flex flex-wrap px-2">
                 <div class="w-full mb-24">
                     <div  id="rolunk">
                         <h1 class="text-blue-400 font-semibold text-4xl">Szarvasi Kacsa tó</h1>

@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 px-2">
             <div class="shadow-lg p-4 rounded-lg bg-[#263d8e] text-white">
                 <h2 class="text-xl font-bold mb-4">Szarvasi programok</h2>
                 @foreach ($szarvas as $event)

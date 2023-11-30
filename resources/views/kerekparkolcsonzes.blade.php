@@ -1,8 +1,8 @@
 <x-guest-layout>
     <div class="min-h-screen container mx-auto pb-10">
-        <div class="mt-[100px]">
+        <div class="mt-[100px] px-2">
             <h1 class="text-blue-400 font-bold boldPoppins text-2xl pb-4">Kerékpár kölcsönzés</h1>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <p>
                         Városfelfedezés, két keréken? Bérelhető kerékpárjainkkal gyorsan és egyszerűen bejárhatják a
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div>
-                    <img class="w-full object-cover object-bottom h-[750px] rounded-md"
+                    <img class="w-full object-cover object-bottom h-[500px] md:h-[750px] rounded-md"
                         src="{{ URL::asset('images/szarvas-latnivalok/20231123-DSC_0003.jpg') }}" alt="">
                 </div>
             </div>

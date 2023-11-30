@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <div x-data="{ openModal: false, images: [], currentImgIndex: 0 }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($images)) !!}'))" class="container mx-auto flex min-h-screen flex-col pt-[100px] pb-10">
+    <div x-data="{ openModal: false, images: [], currentImgIndex: 0 }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($images)) !!}'))" class="container mx-auto flex min-h-screen flex-col pt-[100px] pb-10 px-2">
 
         <h1 class="text-blue-400 font-bold boldPoppins text-2xl pb-8">Látnivalók Szarvason és környékén</h1>
-        <div class="grid grid-cols-6 gap-5">
+        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5">
             @foreach ($images as $index => $imageUrl)
                 <img class="object-cover object-center aspect-[4/3]" src="{{ URL::asset($imageUrl) }}" alt=""
                     @click="openModal = true; currentImgIndex = {{ $index }};">
