@@ -14,14 +14,21 @@
                     }, 4000);
                 }
             }">
-                <div class="w-full h-full relative">
-                    <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 1"
+                <div class="w-full h-full relative flex">
+
+                    <div class="z-20 self-center items-center justify-content-center text-center mx-auto p-4">
+                        <h1 class="text-6xl text-white tracking-wider font-bold items-center justify-center">Kacsa tó</h1>
+                    </div>
+                    
+                        <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 1"
                         x-transition:enter="transition ease-in-out duration-1000 transform"
                         x-transition:enter-start="-translate-x-5 opacity-0"
                         x-transition:enter-end="translate-x-0 opacity-100"
                         x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0"
                         src="{{ URL::asset('images/fooldal/20231123-DSC_0062.jpg') }}" alt="Kőrös folyó csónakkal">
+                    
+
                     <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 2"
                         x-transition:enter="transition ease-in-out duration-1000 transform"
                         x-transition:enter-start="-translate-x-5 opacity-0"
@@ -49,14 +56,14 @@
                         x-transition:enter-end="translate-x-0 opacity-100"
                         x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0"
-                        src="{{ URL::asset('images/fooldal/20231123-DSC_0136.jpeg') }}" alt="Járdaút Szavason">
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0136.jpg') }}" alt="Járdaút Szavason">
                     <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 6"
                         x-transition:enter="transition ease-in-out duration-1000 transform"
                         x-transition:enter-start="-translate-x-5 opacity-0"
                         x-transition:enter-end="translate-x-0 opacity-100"
                         x-transition:leave="transition ease-in-out duration-1000" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0"
-                        src="{{ URL::asset('images/fooldal/20231123-DSC_0142.jpeg') }}" alt="Kosárlabdapálya Szarvason">
+                        src="{{ URL::asset('images/fooldal/20231123-DSC_0142.jpg') }}" alt="Kosárlabdapálya Szarvason">
                     <img class="absolute w-full h-full object-cover object-center" x-show="activeSlide === 7"
                         x-transition:enter="transition ease-in-out duration-1000 transform"
                         x-transition:enter-start="-translate-x-5 opacity-0"
