@@ -1,6 +1,14 @@
 <x-guest-layout>
     <div class="container mx-auto flex min-h-screen flex-col pt-[100px]">
         <h1 class="text-blue-400 font-bold boldPoppins text-2xl">Galéria</h1>
+        <div class="w-full py-10 border-b px-2">
+            <h2 class="font-bold text-xl mb-4">Szarvas Kacsa tó projekt</h2>
+            <div class="aspect-video w-1/2">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/iAJck_kZ5a8" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
         @foreach ($albums as $album)
             <div x-data="{ openModal: false, images: [], currentImgIndex: 0, currentTitle: '{{ addslashes($album->album_name) }}' }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($album->imageUrls)) !!}'))" class="py-10 border-b px-2">
                 <h2 class="font-bold text-xl mb-4">{{ $album->album_name }}</h2>
@@ -16,8 +24,7 @@
                     id="modalScrollable" tabindex="-1" aria-labelledby="modalScrollableLabel" aria-hidden="true">
 
                     <div class="sm:h-[calc(100%-3rem)] w-full relative py-6 px-4 mx-auto">
-                        <div
-                            class="border-none shadow-lg flex flex-col w-full rounded-md">
+                        <div class="border-none shadow-lg flex flex-col w-full rounded-md">
                             <div class="flex justify-between items-center justify-center p-4 rounded-t-md">
                                 <h5 x-text="currentTitle" class="text-2xl text-white text-center"
                                     id="modalScrollableLabel">

@@ -186,7 +186,7 @@
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div x-show="isOpenMobileMenu" class="lg:hidden" id="mobile-menu">
-        <div class="space-y-1 px-2  pt-2 text-white">
+        <div class="space-y-1 px-2 pb-3 pt-2 text-white">
             <a href="/" class="text-white rounded-md px-3 py-2 text-md "
                 aria-current="page">Kezdőlap</a>
 
