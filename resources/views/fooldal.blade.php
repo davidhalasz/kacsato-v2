@@ -81,20 +81,21 @@
             <div class="w-full container mx-auto my-24 flex flex-wrap px-2">
                 <div class="w-full mb-24">
                     <div  id="rolunk">
-                        <h1 class="text-blue-400 font-semibold text-xl md:text-4xl">Szarvasi Kacsa tó</h1>
-                        <div class="grid grid-cols-3 gap-8">
-                            <div class="col-span-3 md:col-span-2">
-                                <p class="mt-6">A Kacsa tó egy mesterséges tó Magyarországon, a Békés vármegyei Szarvas
-                                    város közigazgatási területén.</p>
-                                <p class="mt-4">Szarvas város legfrekventáltabb idegenforgalmi célterülete mellett a Holt-Körös
-                                    partvonalától csupán pár méterre helyezkedik el a Kacsa tó. Jelentős, 8000 m2-es
-                                    területe számos növény és állatfajnak nyújt menedéket. A tóba a terület átadásával
-                                    együtt a Holt-Körösben is honos halak kerülnek betelepítésre: kárász, keszeg,
-                                    törpeharcsa, csuka, busa és ponty.</p>
-                                <p class="mt-4">A tóban fürödni és horgászni nem engedélyezett, védve ezzel a halállományt és a halak
-                                    ívóhelyeit. A környezet kialakításánál, növények telepítésénél fontos szempont volt,
-                                    hogy a helyieket és az ide látogatókat is egy természetközeli hely fogadja, mely
-                                    lehetőséget nyújt a madarak és a víziállatok tanulmányozására, megfigyelésére.</p>
+                        <h6 class="text-greenText text-lg tracking-widest mb-4 ">RÓLUNK</h6>
+                        <h1 class="font-semibold text-xl md:text-4xl text-greenText">Szarvasi Kacsa tó</h1>
+                        <p class="mt-6">A Kacsa tó egy mesterséges tó Magyarországon, a Békés vármegyei Szarvas
+                            város közigazgatási területén.</p>
+                        <p class="mt-4">Szarvas város legfrekventáltabb idegenforgalmi célterülete mellett a Holt-Körös
+                            partvonalától csupán pár méterre helyezkedik el a Kacsa tó. Jelentős, 8000 m2-es
+                            területe számos növény és állatfajnak nyújt menedéket. A tóba a terület átadásával
+                            együtt a Holt-Körösben is honos halak kerülnek betelepítésre: kárász, keszeg,
+                            törpeharcsa, csuka, busa és ponty.</p>
+                        <p class="mt-4">A tóban fürödni és horgászni nem engedélyezett, védve ezzel a halállományt és a halak
+                            ívóhelyeit. A környezet kialakításánál, növények telepítésénél fontos szempont volt,
+                            hogy a helyieket és az ide látogatókat is egy természetközeli hely fogadja, mely
+                            lehetőséget nyújt a madarak és a víziállatok tanulmányozására, megfigyelésére.</p>
+                        <div class="grid grid-cols-2 my-10">
+                            <div class="pr-4 flex flex-col justify-center">
                                 <p class="mt-4">
                                     A terület ugyan hosszú múltra tekint vissza, mégsem volt eddig teljes mértékben
                                     kihasználva. A TOP-1-2.1-16-BS1-2020-00011 „Fenntartható turizmusfejlesztés Szarvason –
@@ -122,19 +123,19 @@
                                     Látogasson el hozzánk!
                                 </p>
                             </div>
-                            <div class="col-span-3 md:col-span-1 flex flex-col w-full gap-8">
-                                <img class="rounded-md w-full object-fit" src="{{URL::asset('/images/covers/kacsatoprojekt1.jpg')}}" alt="Kacsa tó látványterve 1">
-                                <img class="rounded-md w-full object-fit" src="{{URL::asset('/images/covers/kacsatoprojekt2.jpg')}}" alt="Kacsa tó látványterve 2">
-                                <img class="rounded-md w-full object-fit" src="{{URL::asset('/images/covers/kep4.jpg')}}" alt="Kacsa tó látványterve 2">
+                            <div class="relative w-full py-10">
+                                <img class="absolute rounded-lg rounded-br-[50px] max-w-[570px] object-cover h-[450px] right-0 bottom-0" src="{{URL::asset('/images/covers/kacsatoprojekt2.jpg')}}" alt="Kacsa tó látványterve 2">
+                                <img class="absolute rounded-lg rounded-tl-[50px] w-[320px] h-[210px] object-cover left-20 top-4" src="{{URL::asset('/images/covers/kacsatoprojekt1.jpg')}}" alt="Kacsa tó látványterve 2">
+                                <!--<img class="absolute rounded-lg rounded-bl-[50px] w-2/6 object-cover left-20 bottom-10" src="{{URL::asset('/images/covers/kep4.jpg')}}" alt="Kacsa tó látványterve 1">-->
                             </div>
                         </div>
                         
                     </div>
                 </div>
-                <div class="w-full">
+                <div class="w-full mb-24">
                     <div class="flex flex-wrap gap-4">
                         <div id="megkozelites" class="w-full mb-6">
-                            <h2 class="text-blue-400 font-semibold text-xl md:text-4xl">Kacsa tó megközelíthetősége</h2>
+                            <h2 class="text-greenText font-semibold text-xl md:text-4xl">Kacsa tó megközelíthetősége</h2>
                             <p class="mt-4">Budapesttől 165, Békéscsabától 47 kilométerre, a Hármas-Körös holtágának
                                 partján (kákafoki holtág)
                                 fekszik Szarvas város. A Kacsa tó a város nyugati felén, a (Szarvasi) Holt-Körös mellett
@@ -148,6 +149,15 @@
                         <div class="w-full">
                             <img class="rounded-sm" src="{{ URL::asset('/images/fooldal/megerkezes.jpg') }}"
                                 alt="Kacsa tó megközelíthetősége">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full">
+                    <div class="flex flex-wrap gap-4">
+                        <div id="parkolas" class="w-full mb-6">
+                            <h2 class="text-greenText font-semibold text-xl md:text-4xl">Parkolás</h2>
+                            <p class="mt-4">Az idelátogatók ingyenesen igénybe vehetik az üdülősétányon 34 db és a Strand utcában 3 db parkolót. További parkolási lehetőségek kialakítása várható a közelben 2024-ben.</p>
                         </div>
                     </div>
                 </div>

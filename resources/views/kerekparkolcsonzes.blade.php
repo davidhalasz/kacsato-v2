@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="min-h-screen container mx-auto pb-10">
         <div class="mt-[100px] px-2">
-            <h1 class="text-blue-400 font-bold boldPoppins text-2xl pb-4">Kerékpár kölcsönzés</h1>
+            <h1 class="text-greenText font-bold boldPoppins text-2xl pb-4">Kerékpár kölcsönzés</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <p>
@@ -13,16 +13,16 @@
                     </h2>
                     <p>
                         Szarvason Tourinform irodánkban összesen 8 női, 8 férfi és 4 gyermek (2 fiú, 2 lány) Csepel
-                        kerékpár áll rendelkezésre a turisták és az érdeklődők számára.
+                        kerékpár áll rendelkezésre a turistáƒk és az érdeklődők számára.
                     </p>
                     <p class="font-bold boldPoppins text-lg mt-8 mb-2">Nyitva tartás:</p>
                     <table class="table-auto">
                         <tbody>
-                            <tr class="odd:bg-white bg-slate-300">
+                            <tr class="odd:bg-white bg-lightGreen">
                                 <td class="font-bold boldPoppins p-4 pr-6">Hétfő-Péntek:</td>
                                 <td class="p-4">8:00-16:30</td>
                             </tr>
-                            <tr class="odd:bg-white bg-slate-300">
+                            <tr class="odd:bg-white bg-lightGreen/40">
                                 <td class="font-bold boldPoppins p-4 pr-6">Szombat-Vasárnap:</td>
                                 <td class="p-4">9:00-12:00 (június 15. és augusztus 31. között)</td>
                             </tr>
@@ -31,11 +31,11 @@
                     <p class="font-bold boldPoppins text-lg mt-8 mb-2">Árak:</p>
                     <table class="table-auto">
                         <tbody>
-                            <tr class="odd:bg-white bg-slate-300">
+                            <tr class="odd:bg-white">
                                 <td class="font-bold boldPoppins p-4 pr-4 md:pr-6">Felnőtt kerékpár (női/férfi):</td>
                                 <td class="py-4 px-2 md:p-4">1.000 Ft/óra </br>3.000 Ft/nap</td>
                             </tr>
-                            <tr class="odd:bg-white bg-slate-300">
+                            <tr class="odd:bg-white bg-lightGreen/40">
                                 <td class="font-bold boldPoppins p-4 pr-4 md:pr-6">Gyermek kerékpár:</td>
                                 <td class="py-4 px-2 md:p-4">1.000 Ft/óra </br>3.000 Ft/nap</td>
                             </tr>
@@ -52,7 +52,7 @@
                         </svg>
                         <p class="ml-2">5540 Szarvas, Szabadság út 32.</p>
                     </div>
-                    <div class="flex items-center mt-2 hover:text-sky-700 hover:font-bold">
+                    <div class="flex items-center mt-2 hover:text-greenText hover:font-bold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -60,7 +60,7 @@
                         </svg>
                         <a href="tel:+3666311140" class="ml-2">+36 66 311 140</a>
                     </div>
-                    <div class="flex items-center mt-2 hover:text-sky-700 hover:font-bold">
+                    <div class="flex items-center mt-2 hover:text-greenText hover:font-bold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -68,7 +68,7 @@
                         </svg>
                         <a href="tel:+36703127903" class="ml-2">+36 70 312 7903</a>
                     </div>
-                    <div class="flex items-center mt-2 hover:text-sky-700 hover:font-bold">
+                    <div class="flex items-center mt-2 hover:text-greenText hover:font-bold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div>
-                    <img class="w-full object-cover object-bottom h-[500px] md:h-[750px] rounded-md"
+                    <img class="w-full object-cover object-bottom h-[500px] md:h-[750px] rounded-md rounded-tl-[50px]"
                         src="{{ URL::asset('images/szarvas-latnivalok/20231123-DSC_0003.jpg') }}" alt="">
                 </div>
             </div>

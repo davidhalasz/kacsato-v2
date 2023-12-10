@@ -13,6 +13,13 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                georgia: ["Georgia", "serif"],
+            },
+            colors: {
+                darkGreen: '#0C362F',
+                greenText: '#006608',
+                lightGreen: '#47645F',
+                btnGreen: '#00AD0E',
             },
         },
     },

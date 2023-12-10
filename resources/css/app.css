@@ -18,6 +18,23 @@ html {
   opacity: 0;
 }
 
+.zoom-effect img {
+  width: 100%;
+  -webkit-transition: transform 0.5s ease; /* For Safari and Chrome */
+  -moz-transition: transform 0.5s ease; /* For Firefox */
+  -o-transition: transform 0.5s ease; /* For Opera */
+  transition: transform 0.5s ease;
+}
+
+@keyframes zoomEffect {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.2);
+  }
+}
+
 @font-face {
   font-family: PoppinsBold;
   src: url(../../fonts/Poppins/Poppins-Bold.ttf);

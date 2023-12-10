@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="min-h-screen container mx-auto pb-10 px-2">
         <div class="mt-[100px]">
-            <h1 class="text-blue-400 font-bold boldPoppins text-2xl pb-4">Házirend</h1>
+            <h1 class="text-greenText font-bold boldPoppins text-2xl pb-4">Házirend</h1>
             <h2 class="boldPoppins text-lg pb-1 underline">Házirend célja</h2>
             <p class="pb-4">A jelen házirend (a továbbiakban Házirend) rögzíti azokat a szabályokat és működési elveket, melyek
                 betartása hozzájárul a Kacsa tó és rendezvénycsarnok magas szintű üzemeléséhez, jó hírének

@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <div class="container mx-auto pt-[100px] pb-20">
+    <div class="container min-h-screen mx-auto pt-[100px] pb-20">
         <div class="flex justify-between items-center mb-4">
-            <h1 class="text-blue-400 font-bold boldPoppins text-2xl">Kacsa tavi eseménynaptár</h1>
+            <h1 class="text-greenText font-bold boldPoppins text-2xl">Kacsa tavi eseménynaptár</h1>
         </div>
 
         <div class="flex flex-col md:flex-row gap-4">
@@ -270,7 +270,7 @@
                                         if (parseInt(days[d - 1].dataset.year) === parseInt(startDateParts[0]) &&
                                             parseInt(days[d - 1].dataset.month) === parseInt(startDateParts[1]) &&
                                             parseInt(days[d - 1].dataset.day) === d) {
-                                            days[d - 1].classList.add('border', 'border-blue-500');
+                                            days[d - 1].classList.add('border', 'border-greenText');
                                         }
                                     }
                                 }
@@ -280,7 +280,7 @@
                                 if (parseInt(days[j].dataset.year) === parseInt(startDateParts[0]) &&
                                     parseInt(days[j].dataset.month) === parseInt(startDateParts[1]) &&
                                     parseInt(days[j].dataset.day) === parseInt(startDateParts[2])) {
-                                    days[j].classList.add('border', 'border-blue-500');
+                                    days[j].classList.add('border', 'border-greenText');
                                 }
                             }
                         }
@@ -312,11 +312,11 @@
 
                     for (let i = 0; i < days.length; i++) {
                         if (days[i].dataset.day === activedDay) {
-                            days[i].classList.remove('bg-blue-500', 'text-white');
+                            days[i].classList.remove('bg-greenText', 'text-white');
                         }
 
                         if (days[i].dataset.day === day) {
-                            days[i].classList.add('bg-blue-500', 'text-white');
+                            days[i].classList.add('bg-greenText', 'text-white');
 
                             monthTitle.textContent = getMonthName(days[i].dataset.month - 1).toUpperCase();
                             dayTitle.textContent = days[i].dataset.day.toString();
