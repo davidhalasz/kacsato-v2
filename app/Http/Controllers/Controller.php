@@ -10,15 +10,29 @@ use App\Models\Event;
 use App\Models\Album;
 use App\Models\Image;
 use Illuminate\Support\Facades\URL;
+use Carbon\Carbon;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
     public function getEvents() {
-        $events = Event::all();
+        $currentDate = now()->toDateString();
+
+        $currentDate = now()->toDateString();
+
+        $events = Event::where(function ($query) use ($currentDate) {
+            $query->whereNotNull('end_date')
+                ->whereDate('start_date', '<=', $currentDate)
+                ->whereDate('end_date', '>=', $currentDate);
+        })
+        ->orWhereDate('start_date', '>=', $currentDate)
+        ->get();
         
-        $kacsatavi = Event::where('category', 'kacsato')->get();
+        
+        $kacsatavi = $events->filter(function($event) {
+            return $event['category'] === 'kacsato';
+        });
 
         $szarvas = $events->filter(function($event) {
             return $event['category'] === 'szarvas';
@@ -27,6 +41,7 @@ class Controller extends BaseController
         $cervinus = $events->filter(function($event) {
             return $event['category'] === 'cervinus';
         });
+
 
         return view('esemenynaptar', compact(['events', 'kacsatavi', 'szarvas', 'cervinus']));
     }
@@ -79,6 +94,13 @@ class Controller extends BaseController
             'images/szarvas-latnivalok/20231123-DSC_0097.jpg',
         ];
 
-        return view('szarvas-latnivalok', compact(['images']));
+
+        $imageURLs = [];
+
+        foreach ($images as $image) {
+            array_push($imageURLs, URL::asset($image));
+        }
+
+        return view('szarvas-latnivalok', compact(['imageURLs']));
     }
 }

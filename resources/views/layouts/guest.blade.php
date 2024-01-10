@@ -12,7 +12,11 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <link rel="stylesheet" href="{{ asset('css/jsCalendar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jsCalendar.clean.css') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script type="text/javascript" src="{{ asset('js/jsCalendar.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jsCalendar.lang.hu.js')}}"></script>
     </head>
     <body class="font-sans text-gray-900 bg-gray-200 antialiased regularPoppins">
         <div class="min-h-screen">
@@ -23,4 +27,5 @@
             @include('layouts.footer')
         </div>
     </body>
+    
 </html>

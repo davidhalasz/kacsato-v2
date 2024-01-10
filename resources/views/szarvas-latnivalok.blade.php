@@ -1,69 +1,74 @@
-<x-guest-layout>
-    <div x-data="{ openModal: false, images: [], currentImgIndex: 0 }" x-init="images = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($images)) !!}'))" class="container mx-auto flex min-h-screen flex-col pt-[100px] pb-10 px-2">
-
-        <h1 class="text-blue-400 font-bold boldPoppins text-2xl pb-8">Látnivalók Szarvason és környékén</h1>
-        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5">
-            @foreach ($images as $index => $imageUrl)
-                <img class="object-cover object-center aspect-[4/3]" src="{{ URL::asset($imageUrl) }}" alt=""
-                    @click="openModal = true; currentImgIndex = {{ $index }};">
-            @endforeach
-        </div>
-
-        <div x-show="openModal"
-            class="z-[400] fixed top-0 left-0 bottom-0 h-screen w-screen backdrop-blur-sm bg-black/70"
-            id="modalScrollable" tabindex="-1" aria-labelledby="modalScrollableLabel" aria-hidden="true">
-
-            <div class="sm:h-[calc(100%-3rem)] w-full relative py-6 px-4 mx-auto">
-                <div class="border-none shadow-lg flex flex-col w-full rounded-md">
-                    <div class="flex  justify-between items-center justify-center p-4 rounded-t-md">
-                        <h5 class="text-2xl text-white text-center" id="modalScrollableLabel">Látnivalók Szarvason
-                        </h5>
-
-                        <button @click="openModal = false" id="modalButton" type="button" class="text-white font-bold">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex w-full justify-between mb-10">
-                        <div class="flex items-center w-full h-full justify-between gap-4 container mx-auto">
-                            <div class="w-16">
-                                <button x-show="currentImgIndex > 0"
-                                    @click="currentImgIndex = (currentImgIndex - 1 + images.length) % images.length"
-                                    class="prev-button text-white font-bold">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </button>
+<x-guest-layout> 
+    <div class="container mx-auto flex min-h-screen flex-col pt-[100px]">
+        <h1 class="text-greenText font-bold boldPoppins text-2xl mb-4">Látnivalók Szarvason és környékén</h1>
+            <div x-data="{
+                imageGalleryOpened: false,
+                imageGalleryActiveUrl: null,
+                imageGalleryImageIndex: null,
+                imageGallery: [],
+                imageGalleryOpen(event) {
+                    this.imageGalleryImageIndex = event.target.dataset.index;
+                    this.imageGalleryActiveUrl = event.target.src;
+                    this.imageGalleryOpened = true;
+                },
+                imageGalleryClose() {
+                    this.imageGalleryOpened = false;
+                    setTimeout(() => this.imageGalleryActiveUrl = null, 300);
+                },
+                imageGalleryNext(){
+                    this.imageGalleryImageIndex = (this.imageGalleryImageIndex == this.imageGallery.length) ? 1 : (parseInt(this.imageGalleryImageIndex) + 1);
+                    this.imageGalleryActiveUrl = this.$refs.gallery.querySelector('[data-index=\'' + this.imageGalleryImageIndex + '\']').src;
+                },
+                imageGalleryPrev() {
+                    this.imageGalleryImageIndex = (this.imageGalleryImageIndex == 1) ? this.imageGallery.length : (parseInt(this.imageGalleryImageIndex) - 1);
+                    this.imageGalleryActiveUrl = this.$refs.gallery.querySelector('[data-index=\'' + this.imageGalleryImageIndex + '\']').src;
+                }
+            }"
+            @image-gallery-next.window="imageGalleryNext()"
+            @image-gallery-prev.window="imageGalleryPrev()"
+            @keyup.right.window="imageGalleryNext();"
+            @keyup.left.window="imageGalleryPrev();"
+            x-init="imageGallery = JSON.parse(decodeURIComponent('{!! htmlspecialchars(json_encode($imageURLs)) !!}'))"
+            class="w-full h-full select-none mb-8">
+                <div class="max-w-6xl mx-auto duration-1000 delay-300 opacity-0 select-none ease animate-fade-in-view" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
+                    <ul x-ref="gallery" id="gallery" class="grid grid-cols-2 gap-5 lg:grid-cols-6">
+                        <template x-for="(imageURL, index) in imageGallery">
+                            <li><img x-on:click="imageGalleryOpen" :src="imageURL" :data-index="index+1" class="object-cover select-none w-full h-auto bg-gray-200 rounded cursor-zoom-in aspect-[4/3] lg:aspect-[4/3] xl:aspect-[4/3]"></li>
+                        </template>
+                    </ul>
+                </div>
+                <template x-teleport="body">
+                    <div
+                    x-show="imageGalleryOpened"
+                    x-transition:enter="transition ease-in-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:leave="transition ease-in-in duration-300"
+                    x-transition:leave-end="opacity-0"
+                    @click="imageGalleryClose"
+                    @keydown.window.escape="imageGalleryClose"
+                    x-trap.inert.noscroll="imageGalleryOpened"
+                    class="fixed inset-0 z-[99] flex items-center justify-center bg-black bg-opacity-50 select-none cursor-zoom-out" x-cloak>
+                        <div class="relative flex items-center justify-center w-11/12 xl:w-4/5 h-10/12">
+                            <div @click="$event.stopPropagation(); $dispatch('image-gallery-prev')" class="absolute left-0 flex items-center justify-center text-white translate-x-10 rounded-full cursor-pointer xl:-translate-x-24 2xl:-translate-x-32 bg-white/10 w-14 h-14 hover:bg-white/20">
+                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                             </div>
-
-                            <div id="modalContent" class="image-container">
-                                <img :src="'{{ URL::asset('/') }}' + images[currentImgIndex]" class="modal-image"
-                                    alt="">
+                            <div class="h-screen flex flex-col py-10">
+                                <img
+                                x-show="imageGalleryOpened"
+                                x-transition:enter="transition ease-in-out duration-300"
+                                x-transition:enter-start="opacity-0 transform scale-50"
+                                x-transition:leave="transition ease-in-in duration-300"
+                                x-transition:leave-end="opacity-0 transform scale-50"
+                                class="object-contain object-center w-full h-full select-none cursor-zoom-out" :src="imageGalleryActiveUrl" alt="" style="display: none;">
                             </div>
-
-                            <div class="w-10">
-                                <button x-show="currentImgIndex < images.length - 1"
-                                    @click="currentImgIndex = (currentImgIndex + 1) % images.length"
-                                    class="next-button text-white font-bold">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </button>
+                            
+                            <div @click="$event.stopPropagation(); $dispatch('image-gallery-next');" class="absolute right-0 flex items-center justify-center text-white -translate-x-10 rounded-full cursor-pointer xl:translate-x-24 2xl:translate-x-32 bg-white/10 w-14 h-14 hover:bg-white/20">
+                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                </template>
             </div>
-        </div>
-
-    </div>
+    </div>  
 
 </x-guest-layout>

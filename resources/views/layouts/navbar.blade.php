@@ -68,7 +68,7 @@
                                         tabindex="-1" id="user-menu-item-0">Rövid ismertető</a>
                                     <a onclick="scrollToDiv('megkozelites')" href="/#megkozelites" class="block px-4 py-2 text-md  text-gray-700 hover:text-btnGreen" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Megközelítés</a>
-                                    <a href="/rolunk/parkolas" class="block px-4 py-2 text-md  text-gray-700 hover:text-btnGreen" role="menuitem"
+                                    <a onclick="scrollToDiv('parkolas')" href="/#parkolas" class="block px-4 py-2 text-md  text-gray-700 hover:text-btnGreen" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Parkolás</a>
                                     <a href="/rolunk/hazirend" class="block px-4 py-2 text-md  text-gray-700 hover:text-btnGreen" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Házirend</a>
@@ -214,7 +214,7 @@
                             id="user-menu-item-0">Rövid ismertető</a>
                         <a onclick="scrollToDiv('megkozelites')" href="/#megkozelites" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Megközelítés</a>
-                        <a href="/rolunk/parkolas" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
+                        <a honclick="scrollToDiv('parkolas')" href="/#parkolas" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Parkolás</a>
                         <a href="/rolunk/hazirend" class="block px-4 py-2 text-md " role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Házirend</a>

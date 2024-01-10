@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('fooldal');
 })->name('fooldal');
 
-Route::get('/rolunk/parkolas', function () {
-    return view('parkolas');
-})->name('parkolas');
-
 Route::get('/turizmus/kerekpar-kolcsonzes', function () {
     return view('kerekparkolcsonzes');
 })->name('kerekparkolcsonzes');
