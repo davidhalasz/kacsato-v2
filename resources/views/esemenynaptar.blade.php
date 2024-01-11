@@ -5,10 +5,8 @@
         </div>
 
         <div class="container mx-auto flex gap-3">
-            <div id="kacsato-cards" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
+            <div id="kacsato-cards" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2">
                 <div id="calendar-target" class="flex-none mx-auto" data-first-day-of-the-week="2"></div>
-
-
             </div>
         </div>
 
@@ -16,7 +14,7 @@
             <div class="absolute z-[-5] w-full h-[250px] bg-[#263d8e] opacity-40"></div>
             <div class="container mx-auto flex flex-col px-2">
                 <h2 class="text-2xl text-[#263d8e] font-bold mb-4 pb-4 pt-10">Szarvasi programok</h2>
-                <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     @foreach ($szarvas as $event)
                         @php
                             setlocale(LC_TIME, 'hu_HU.UTF-8');
@@ -62,7 +60,7 @@
             <div class="absolute z-[-5] w-full h-[250px] bg-[#7F0B0C] opacity-40"></div>
             <div class="container mx-auto flex flex-col px-2">
                 <h2 class="text-2xl text-[#7F0B0C] font-bold mb-4 pb-4 pt-10">Cervinus programok</h2>
-                <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     @foreach ($cervinus as $event)
                         @php
                             setlocale(LC_TIME, 'hu_HU.UTF-8');
