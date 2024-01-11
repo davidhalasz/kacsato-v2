@@ -21,8 +21,13 @@ export default {
                 lightGreen: '#47645F',
                 btnGreen: '#00AD0E',
             },
+            transitionDuration: {
+                '2000': '2000ms',
+            }
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms
+    ],
 };

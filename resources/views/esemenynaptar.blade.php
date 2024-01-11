@@ -109,7 +109,8 @@
         <!-- MODAL -->
         <div class="z-[400] fixed hidden top-0 left-0 w-full h-full outline-none overflow-x-hidden overflow-y-auto backdrop-blur-sm bg-black/30"
             id="modalScrollable" tabindex="-1" aria-labelledby="modalScrollableLabel" aria-hidden="true">
-            <div class="sm:h-[calc(100%-3rem)] max-w-2xl my-6  px-4 mx-auto relative w-auto pointer-events-none">
+            <div id="modal-window"
+                class="sm:h-[calc(100%-3rem)] max-w-2xl my-6  px-4 mx-auto relative w-auto pointer-events-none">
                 <div
                     class="max-h-full overflow-hidden border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                     <div
@@ -148,9 +149,9 @@
                     <div
                         class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
                         <button id="modalButton" type="button"
-                            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                            class="inline-block px-6 py-2.5 bg-btnGreen text-white font-medium text-xs leading-tight uppercase rounded shadow-md  hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
                             data-bs-dismiss="modal">
-                            Bezaras
+                            Bezárás
                         </button>
                     </div>
                 </div>
@@ -158,10 +159,25 @@
         </div>
 
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const modalBtn = document.getElementById('modalButton');
+                const modalElement = document.getElementById('modalScrollable');
+                modalBtn.addEventListener('click', function() {
+                    modalElement.classList.add('hidden');
+                });
+
+                modalElement.addEventListener('click', function(event) {
+                    if (event.target.id === 'modalScrollable') {
+                        modalElement.classList.add('hidden');
+                    }
+                });
+            });
+
             var resData = @json($kacsatavi);
             var kacsatoEventsElement = document.getElementById("kacsato-cards");
             var calendarElement = document.getElementById("calendar-target");
             let checkDate = new Date();
+            var baseUrl = "{{ URL::to('/') }}";
 
             highlightedDates = [];
 
@@ -175,6 +191,7 @@
                 }
             }
 
+            // init calendar
             const date = new Date();
 
             let day = date.getDate();
@@ -190,6 +207,17 @@
                 dayFormat: "DDD",
             });
 
+            let cardIndex = 0;
+            
+            // first time display today events 
+            for (var key in resData) {
+                if (resData.hasOwnProperty(key)) {
+                    addEventCards(resData[key], checkDate);
+                }
+            }
+
+            cardIndex = 0;
+
             myCalendar.onDateClick(function(event, date) {
                 let cardElements = document.getElementsByClassName('kacsato-event-card');
                 Array.from(cardElements).forEach(function(element) {
@@ -202,6 +230,7 @@
                         addEventCards(resData[key], checkDate);
                     }
                 }
+                cardIndex = 0;
             });
 
             myCalendar.select(highlightedDates);
@@ -222,9 +251,13 @@
                 }
             }
 
+            
             function addEventCards(item, checkDate) {
-
+                
                 if (dateCheck(item.start_date, item.end_date, checkDate)) {
+                    let durationNumber = 1000;
+                    let durationClassName = `duration-[1000ms]`;
+                    
                     let startPart = item.start_date.split(' ')[0];
                     let dateString = formatDate(startPart);
 
@@ -232,51 +265,63 @@
                         dateString += ` - ${formatDate(item.end_date.split(' ')[0])}`;
                     }
 
-                    let card = `
-                    <div class="kacsato-event-card bg-white rounded-md hover:shadow-lg">
-                        <div class="h-[200px] bg-green-500 rounded-t-md"></div>
-                        <div class="flex flex-col p-2">
+                    let imgURL = baseUrl + '/storage/' + item.filepath;
+
+                    let cardDiv = document.createElement('div');
+
+                    
+
+                    cardDiv.classList.add('kacsato-event-card', 'bg-white', 'rounded-md', 'hover:shadow-lg', 'opacity-0',
+                        'transition-opacity', durationClassName, 'ease-in-out');
+
+                    cardDiv.innerHTML = `
+                        <div class="h-[200px] rounded-t-md">
+                            <img class="w-full h-full object-cover object-top rounded-t-md" src="${imgURL}" alt="" srcset="">
+                        </div>
+                        <div class="flex flex-col px-2 py-4">
                             <h2 class="font-bold text-lg">${item.title}</h2>
                             <div class="border-b-2 border-gray-300 py-2 mb-4"></div>
                             <div class="flex gap-2 text-sm font-bold text-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                                 </svg>
                                 <p>${dateString}</p>
                             </div>
-                            <div class="flex gap-2 text-sm font-bold text-gray-600 mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                                </svg>
-                                <p>Valahol ter, Kacsa to</p>
-                            </div>
                         </div>
-                    </div>
                     `;
 
-                    kacsatoEventsElement.insertAdjacentHTML('beforeend', card);
+                    cardDiv.addEventListener('click', function() {
+                        openModal(item);
+                    });
+
+                    kacsatoEventsElement.appendChild(cardDiv);
+
+                    requestAnimationFrame(() => {
+                        cardDiv.classList.remove('opacity-0');
+                    });
+                    cardIndex += cardIndex + 1;
                 }
             }
 
             function dateCheck(from, to, check) {
+                let fromDate = new Date(from.split(' ')[0]);
+                fromDate.setHours(0, 0, 0, 0);
 
-                var fDate, lDate, cDate;
-                fDate = Date.parse(from);
-                lDate = Date.parse(to);
-                cDate = Date.parse(check);
+                let checkDate = new Date(check);
+                checkDate.setHours(0, 0, 0, 0);
 
-                if (to !== null) {
-                    if ((cDate <= lDate && cDate >= fDate)) {
-                        console.log(true);
+                if (to === null) {
+                    if (check.getTime() === fromDate.getTime()) {
                         return true;
                     }
-                    console.log(false);
+                    return false;
+                } else {
+                    let toDate = new Date(to.split(' ')[0]);
+                    toDate.setHours(0, 0, 0, 0);
+
+                    if ((check <= toDate && check >= fromDate)) {
+                        return true;
+                    }
                     return false;
                 }
             }
@@ -291,20 +336,20 @@
                 const month = months[dateObj.getMonth()];
                 const day = dateObj.getDate();
 
-                const formattedDate = `${year}. ${month}. ${day}.`;
+                const formattedDate = `${year}. ${month} ${day}.`;
 
                 return formattedDate;
             }
 
             const inputDate = "2024-01-10";
             const formattedDate = formatDate(inputDate);
-            console.log(formattedDate);
         </script>
 
         <script>
             function openModal(data) {
                 const modalElement = document.getElementById('modalScrollable');
                 const modalLabel = document.getElementById('modalScrollableLabel');
+
                 var baseUrl = "{{ URL::to('/') }}";
 
                 modalElement.classList.remove('hidden');
@@ -328,6 +373,19 @@
                         `${generateModalDateStr(data['start_date'])}`;
                 }
 
+            }
+
+            function generateModalDateStr(datetimeStr) {
+                let parts = datetimeStr.split(' ');
+                let dateParts = parts[0].split('-');
+
+                let months = ["jan.", "febr.", "márc.", "ápr.", "máj.", "jún.", "júl.", "aug.",
+                    "szept.", "okt.", "nov.", "dec."
+                ];
+
+                let shortMonth = months[dateParts[1] - 1];
+
+                return `${dateParts[0]}. ${shortMonth} ${dateParts[2]}.`;
             }
         </script>
     </div>
